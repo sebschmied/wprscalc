@@ -25,14 +25,14 @@ function getCompQuality($pq_srp, $pq_srtp, $no_of_pilots, $avg_number_of_partici
         + $pq_min;
 
 
-    echo "participant quality: $pq out of 1.0" . PHP_EOL;
+    echo "<p>participant quality: $pq out of 1.0</p>" . PHP_EOL;
 
     $pn = sqrt($no_of_pilots / $avg_number_of_participants_last_12_months);
     if ($pn > $pn_max) {
         $pn = $pn_max;
     }
 
-    echo "participant number: $pn out of $pn_max" . PHP_EOL;
+    echo "<p>participant number: $pn out of $pn_max</p>" . PHP_EOL;
 
 
     if ($number_of_tasks > 0) {
@@ -47,11 +47,11 @@ function getCompQuality($pq_srp, $pq_srtp, $no_of_pilots, $avg_number_of_partici
         $ta = 1.0;
     }
 
-    echo "comp success: $ta out of 1.0 ($number_of_tasks of 3 tasks)" . PHP_EOL;
+    echo "<p>comp success: $ta out of 1.0 ($number_of_tasks of 3 or more tasks)</p>" . PHP_EOL;
 
     $td = 1 / (1 + pow($td_a, ($days_since_end_of_comp / 1096.0 * $td_b - $td_b / 2.0)));
 
-    echo "time devaluation: $td" . PHP_EOL . PHP_EOL;
+    echo "<p>time devaluation: $td</p>" . PHP_EOL . PHP_EOL;
 
     $competition_ranking = $pq * $pn * $ta;
     return $competition_ranking;
